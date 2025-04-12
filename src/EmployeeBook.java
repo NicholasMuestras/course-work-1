@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class EmployeeBook {
 
     private final Employee[] storage;
@@ -80,7 +78,9 @@ public class EmployeeBook {
 
     private Employee[] getEmployeesWithMinimumSalary(Employee[] employees) {
         float minimumSalary = 0;
-        Employee[] found = null;
+        Employee[] found;
+        int totalCount = 0;
+        int i = 0;
 
         for (Employee employee : employees) {
             if (employee == null) {
@@ -93,20 +93,17 @@ public class EmployeeBook {
         }
 
         for (Employee employee : employees) {
-            if (employee == null) {
-                continue;
+            if (employee != null && minimumSalary == employee.getSalary()) {
+                totalCount++;
             }
+        }
 
-            if (minimumSalary != employee.getSalary()) {
-                continue;
-            }
+        found = new Employee[totalCount];
 
-            if (found == null) {
-                found = new Employee[1];
-                found[0] = employee;
-            } else {
-                found = Arrays.copyOf(found, found.length + 1);
-                found[found.length - 1] = employee;
+        for (Employee employee : employees) {
+            if (employee != null && minimumSalary == employee.getSalary()) {
+                found[i] = employee;
+                i++;
             }
         }
 
@@ -119,7 +116,9 @@ public class EmployeeBook {
 
     private Employee[] getEmployeesWithMaximumSalary(Employee[] employees) {
         float maximumSalary = 0;
-        Employee[] found = null;
+        Employee[] found;
+        int totalCount = 0;
+        int i = 0;
 
         for (Employee employee : employees) {
             if (employee == null) {
@@ -132,20 +131,17 @@ public class EmployeeBook {
         }
 
         for (Employee employee : employees) {
-            if (employee == null) {
-                continue;
+            if (employee != null && maximumSalary == employee.getSalary()) {
+                totalCount++;
             }
+        }
 
-            if (maximumSalary != employee.getSalary()) {
-                continue;
-            }
+        found = new Employee[totalCount];
 
-            if (found == null) {
-                found = new Employee[1];
-                found[0] = employee;
-            } else {
-                found = Arrays.copyOf(found, found.length + 1);
-                found[found.length - 1] = employee;
+        for (Employee employee : employees) {
+            if (employee != null && maximumSalary == employee.getSalary()) {
+                found[i] = employee;
+                i++;
             }
         }
 
@@ -158,17 +154,17 @@ public class EmployeeBook {
 
     private float getAverageSalary(Employee[] employees) {
         float averageSalary = 0;
-        int countEmploees = 0;
+        int countEmployees = 0;
 
         for (Employee employee : employees) {
             if (employee != null) {
-                countEmploees++;
+                countEmployees++;
                 averageSalary += employee.getSalary();
             }
         }
 
-        if (countEmploees > 0) {
-            averageSalary = averageSalary / countEmploees;
+        if (countEmployees > 0) {
+            averageSalary = averageSalary / countEmployees;
         }
 
         return averageSalary;
@@ -182,38 +178,33 @@ public class EmployeeBook {
         }
     }
 
-    private Employee increaseSalary(Employee employee, float percent) {
+    private void increaseSalary(Employee employee, float percent) {
         if (percent < 0) {
             throw new RuntimeException("Percent must be >= 0.");
         }
 
-        if (employee.getSalary() == 0) {
-            return employee;
+        if (employee.getSalary() != 0) {
+            employee.setSalary(employee.getSalary() + employee.getSalary() / 100 * percent);
         }
-
-        employee.setSalary(employee.getSalary() + employee.getSalary() / 100 * percent);
-
-        return employee;
     }
 
     public Employee[] getEmployeesByTeam(String team) {
-        Employee[] found = null;
+        Employee[] found;
+        int totalCount = 0;
+        int i = 0;
 
         for (Employee employee : this.storage) {
-            if (employee == null) {
-                continue;
+            if (employee != null && team.equals(employee.getTeam())) {
+                totalCount++;
             }
+        }
 
-            if (!team.equals(employee.getTeam())) {
-                continue;
-            }
+        found = new Employee[totalCount];
 
-            if (found == null) {
-                found = new Employee[1];
-                found[0] = employee;
-            } else {
-                found = Arrays.copyOf(found, found.length + 1);
-                found[found.length - 1] = employee;
+        for (Employee employee : this.storage) {
+            if (employee != null && team.equals(employee.getTeam())) {
+                found[i] = employee;
+                i++;
             }
         }
 

@@ -60,11 +60,12 @@ public class Main {
         }
 
         System.out.println("Удалить сотрудника по id 2:");
-        employeeBook.delete(2);
-        employeeBook.printEmployees();
-
+        employeeBook
+                .delete(2)
+                .printEmployees();
         System.out.println("Добавить нового сотрудника (вместо Devi Jons, ячейка 3):");
-        employeeBook.add(new Employee("Jack", "Sparrow", "", "4", 88.88F));
-        employeeBook.printEmployees();
+        employeeBook
+                .add(new Employee("Jack", "Sparrow", "", "4", 88.88F))
+                .printEmployees();
     }
 }
