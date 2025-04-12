@@ -170,12 +170,14 @@ public class EmployeeBook {
         return averageSalary;
     }
 
-    public void increaseSalaryToAll(float percent) {
+    public EmployeeBook increaseSalaryToAll(float percent) {
         for (Employee employee : this.storage) {
             if (employee != null) {
                 increaseSalary(employee, percent);
             }
         }
+
+        return this;
     }
 
     private void increaseSalary(Employee employee, float percent) {
@@ -258,11 +260,11 @@ public class EmployeeBook {
         return this.getAverageSalary(found);
     }
 
-    public void increaseSalaryByTeam(String team, float percent) {
+    public EmployeeBook increaseSalaryByTeam(String team, float percent) {
         Employee[] employeesByTeam = this.getEmployeesByTeam(team);
 
         if (employeesByTeam == null) {
-            return;
+            return this;
         }
 
         for (Employee employeeByTeam : employeesByTeam) {
@@ -276,6 +278,8 @@ public class EmployeeBook {
                 }
             }
         }
+
+        return this;
     }
 
     public void printEmployeesByTeam(String team) {

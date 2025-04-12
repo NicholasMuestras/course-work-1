@@ -23,8 +23,9 @@ public class Main {
 
         // Requirements difficult
         System.out.println("Список проиндексированных ЗП сотрудников:");
-        employeeBook.increaseSalaryToAll(25);
-        employeeBook.printEmployees();
+        employeeBook
+                .increaseSalaryToAll(25)
+                .printEmployees();
 
         System.out.println("Получить в качестве параметра номер отдела (1-5) И ");
         System.out.println("найти сотрудника с минимальной зп: " + Arrays.toString(employeeBook.getEmployeesWithMinimumSalaryByTeam("3")));
@@ -32,8 +33,9 @@ public class Main {
         System.out.println("найти сумму затрат на зп по отделу: " + employeeBook.getSumOfSalariesByTeam("3"));
         System.out.println("найти среднюю зп по отделу: " + employeeBook.getAverageOfSalariesByTeam("3"));
         System.out.println("проиндексировать зп отдела на процент: ");
-        employeeBook.increaseSalaryByTeam("2", 10);
-        employeeBook.printEmployees();
+        employeeBook
+                .increaseSalaryByTeam("2", 10)
+                .printEmployees();
         System.out.println("напечатать всех сотрудников отдела (все данные, кроме отдела):");
         employeeBook.printEmployeesByTeam("3");
 
@@ -46,8 +48,9 @@ public class Main {
         // Requirements very-difficult: Refactoring done.
         employeeBook.printEmployees();
         System.out.println("Добавить нового сотрудника:");
-        employeeBook.add(new Employee("Chuck", "Norris", "", "5", 99.99F));
-        employeeBook.printEmployees();
+        employeeBook
+                .add(new Employee("Chuck", "Norris", "", "5", 99.99F))
+                .printEmployees();
 
         System.out.println("Получить сотрудника по id 2:");
 
